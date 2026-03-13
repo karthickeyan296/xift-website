@@ -348,6 +348,65 @@
     .lb-nav { display: none !important; }
     .lb-counter { bottom: 12px; padding: 4px 14px; font-size: 12px; }
   }
+
+  /* ─── LEGENDS CAROUSEL ─── */
+  .legends-carousel {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    overflow: hidden;
+  }
+  .legends-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 10px 0;
+  }
+  .legends-track .gallery-card {
+    flex: 0 0 calc(33.333% - 16px);
+    margin: 0;
+    transition: transform .5s ease, filter .3s, opacity .5s; /* Ensure individual cards can still transition if needed */
+  }
+  
+  /* Force visibility for carousel items since they are in a slider */
+  .legends-carousel.visible .gallery-card {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .legends-carousel {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .legends-carousel.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Carousel Dots */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(212,168,67,.2);
+    border: 1px solid rgba(212,168,67,.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .dot.active {
+    background: var(--gold);
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(212,168,67,0.6);
+    border-color: var(--gold-light);
+  }
 </style>
 </head>
 <body>
@@ -543,55 +602,60 @@
   <div class="wrap">
     <div class="section-label centered">Hall of Fame</div>
     <h2 class="section-title centered">XIFT <em>Legends</em></h2>
-    <p style="text-align:center;color:var(--text-dim);font-size:16px;line-height:1.7;max-width:640px;margin:0 auto 8px;">Athletes and coaches who have achieved national and international glory across multiple sports disciplines, representing the pinnacle of Indian athletic excellence.</p>
+    <p style="text-align:center;color:var(--text-dim);font-size:16px;line-height:1.7;max-width:640px;margin:0 auto 10px;">Athletes and coaches who have achieved national and international glory across multiple sports disciplines, representing the pinnacle of Indian athletic excellence.</p>
 
-    <div class="gallery-grid-3">
-      <div class="gallery-card observe" data-src="assets/awards.xift.in/14 LEGEND1.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/14 LEGEND1.png" alt="Legend 1" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
+    <div class="legends-carousel observe" id="legendsCarousel">
+      <div class="legends-track" id="legendsTrack">
+        <div class="gallery-card" data-src="assets/awards.xift.in/14 LEGEND1.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/14 LEGEND1.png" alt="Legend 1" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/15 LEGEND2.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/15 LEGEND2.png" alt="Legend 2" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/16 LEGEND3.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/16 LEGEND3.png" alt="Legend 3" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/17 LEGEND4.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/17 LEGEND4.png" alt="Legend 4" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/18 LEGEND5.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/18 LEGEND5.png" alt="Legend 5" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/19 LEGEND6.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/19 LEGEND6.png" alt="Legend 6" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/20 LEGEND7.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/20 LEGEND7.png" alt="Legend 7" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/21 LEGEND8.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/21 LEGEND8.png" alt="Legend 8" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
+        <div class="gallery-card" data-src="assets/awards.xift.in/22 LEGEND9.png" data-group="legends">
+          <div class="img-wrap"><img src="assets/awards.xift.in/22 LEGEND9.png" alt="Legend 9" loading="lazy"></div>
+          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
+          <div class="img-bar"></div>
+        </div>
       </div>
-      <div class="gallery-card observe" style="transition-delay:.08s" data-src="assets/awards.xift.in/15 LEGEND2.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/15 LEGEND2.png" alt="Legend 2" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.16s" data-src="assets/awards.xift.in/16 LEGEND3.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/16 LEGEND3.png" alt="Legend 3" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.0s" data-src="assets/awards.xift.in/17 LEGEND4.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/17 LEGEND4.png" alt="Legend 4" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.08s" data-src="assets/awards.xift.in/18 LEGEND5.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/18 LEGEND5.png" alt="Legend 5" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.16s" data-src="assets/awards.xift.in/19 LEGEND6.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/19 LEGEND6.png" alt="Legend 6" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.0s" data-src="assets/awards.xift.in/20 LEGEND7.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/20 LEGEND7.png" alt="Legend 7" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.08s" data-src="assets/awards.xift.in/21 LEGEND8.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/21 LEGEND8.png" alt="Legend 8" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
-      <div class="gallery-card observe" style="transition-delay:.16s" data-src="assets/awards.xift.in/22 LEGEND9.png" data-group="legends">
-        <div class="img-wrap"><img src="assets/awards.xift.in/22 LEGEND9.png" alt="Legend 9" loading="lazy"></div>
-        <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        <div class="img-bar"></div>
-      </div>
+      <div class="carousel-dots" id="legendsDots"></div>
     </div>
+  </div>
+</div>
   </div>
 </div>
 
@@ -814,6 +878,76 @@
       if(entry.isIntersecting){ entry.target.querySelectorAll('[data-count]').forEach(n=>animCounter(n,+n.dataset.count)); sio.unobserve(entry.target); }
     });
   },{ threshold:.3 });
+
+  // ─── LEGENDS SLIDER ───
+  (function initLegendsSlider() {
+    const track = document.getElementById('legendsTrack');
+    const dotsContainer = document.getElementById('legendsDots');
+    if (!track) return;
+    
+    const cards = [...track.querySelectorAll('.gallery-card')];
+    let index = 0;
+    let autoPlay;
+
+    function getVisibleCount() {
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const visible = getVisibleCount();
+      const dotCount = cards.length - visible + 1;
+      if (dotCount <= 0) return;
+      
+      for (let i = 0; i < dotCount; i++) {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === index ? ' active' : '');
+        d.addEventListener('click', () => { index = i; update(); });
+        dotsContainer.appendChild(d);
+      }
+    }
+
+    function update() {
+      const visible = getVisibleCount();
+      const maxIndex = cards.length - visible;
+      if (index > maxIndex) index = 0;
+      if (index < 0) index = maxIndex;
+
+      // Use percentages for cleaner one-by-one movement
+      const step = 100 / visible;
+      track.style.transform = `translateX(-${index * step}%)`;
+
+      // Update dots
+      dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+    }
+
+    function startAuto() {
+      autoPlay = setInterval(() => {
+        index++;
+        update();
+      }, 4000);
+    }
+
+    window.addEventListener('resize', () => { 
+      buildDots(); 
+      update(); 
+    });
+
+    track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    track.parentElement.addEventListener('mouseleave', startAuto);
+
+    // Initial setup
+    setTimeout(() => {
+      buildDots();
+      update();
+      startAuto();
+    }, 500); // Small delay to ensure layout is ready
+  })();
+
   const sb = document.querySelector('.stats-band');
   if(sb) sio.observe(sb);
 </script>
